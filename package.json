@@ -1,0 +1,32 @@
+{
+  "name": "myscript-angular",
+  "version": "0.0.1",
+  "description": "AngularJs integrations for MyScript by VisionObjects",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bguiz/myscript-angular"
+  },
+  "keywords": [
+    "myscript",
+    "angularjs",
+    "angular",
+    "handwriting",
+    "writing",
+    "recognition",
+    "OCR",
+    "math",
+    "equation"
+  ],
+  "author": "bguiz",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/bguiz/myscript-angular/issues"
+  },
+  "homepage": "https://github.com/bguiz/myscript-angular"
+}
