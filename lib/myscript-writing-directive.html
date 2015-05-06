@@ -1,0 +1,42 @@
+<div
+  class="myscript-writing-directive"
+  width="100%"
+  >
+  <svg
+    class="myscript-writing-svg"
+    width="200px"
+    height="200px"
+    style="background-color: grey;"
+    fill="slategrey" stroke="black" stroke-width="3"
+    >
+    <g
+      class="myscript-writing-stroke"
+      ng-cloak
+      ng-repeat="stroke in strokes"
+      >
+      <line
+        class="myscript-writing-segment"
+        ng-cloak
+        ng-repeat="segment in stroke.segments"
+        ng-style="lineStyle"
+        ng-attr-x1="{{segment.x1}}"
+        ng-attr-x2="{{segment.x2}}"
+        ng-attr-y1="{{segment.y1}}"
+        ng-attr-y2="{{segment.y2}}"
+        >
+      </line>
+    </g>
+  </svg>
+  <div
+    class="myscript-writing-done"
+    ng-click="onDone()"
+    >
+    Done
+  </div>
+  <div
+    class="myscript-writing-cancel"
+    ng-click="onCancel()"
+    >
+    Cancel
+  </div>
+</div>
