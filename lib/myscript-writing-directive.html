@@ -9,23 +9,14 @@
     style="background-color: grey;"
     fill="slategrey" stroke="black" stroke-width="3"
     >
-    <g
+    <path
       class="myscript-writing-stroke"
       ng-cloak
       ng-repeat="stroke in strokes"
-      >
-      <line
-        class="myscript-writing-segment"
-        ng-cloak
-        ng-repeat="segment in stroke.segments"
-        ng-style="lineStyle"
-        ng-attr-x1="{{segment.x1}}"
-        ng-attr-x2="{{segment.x2}}"
-        ng-attr-y1="{{segment.y1}}"
-        ng-attr-y2="{{segment.y2}}"
-        >
-      </line>
-    </g>
+      ng-style="lineStyle"
+      ng-attr-d="{{stroke.path}}"
+    >
+    </path>
   </svg>
   <div
     class="myscript-writing-done"
