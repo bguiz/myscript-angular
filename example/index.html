@@ -1,0 +1,29 @@
+<!doctype html>
+<html
+  lang="en"
+  ng-app="demo-myscript-app"
+  >
+<head>
+  <script src="./angular-1.3.2.js"></script>
+  <script src="../lib/myscript-module.js"></script>
+  <script src="../lib/myscript-recogniser-service.js"></script>
+  <script src="../lib/myscript-writing-directive.js"></script>
+  <script src="./index.js"></script>
+</head>
+<body>
+  <div ng-view>
+    <div
+      ng-controller="demo-myscript-controller"
+      >
+      <h1>Myscript AngularJs Demo</h1>
+      <input
+        myscript-writing=""
+        recognise-type="recogniseType"
+        strokes="strokes"
+        >
+      </input>
+    </div>
+  </div>
+
+</body>
+</html>
