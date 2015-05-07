@@ -12,4 +12,26 @@ function DemoMyscriptController($scope) {
   console.log('Construct DemoMyscriptController');
   $scope.recogniseType = 'equation';
   $scope.strokes = [];
+  $scope.results = {};
+
+  $scope.formattedResults = {
+    latex: '',
+    mathml: '',
+    raw: '{}',
+  };
+
+  $scope.$watch('results', function() {
+    $scope.formattedResults.raw = JSON.stringify($scope.results, undefined, '  ');
+
+    var results = $scope.results.data.result.results;
+    results.forEach(function(result) {
+      var type;
+      if (result.type.toUpperCase() === 'LATEX') {
+        $scope.formattedResults.latex = result.value;
+      }
+      if (result.type.toUpperCase() === 'MATHML') {
+        $scope.formattedResults.mathml = result.value;
+      }
+    });
+  });
 }
