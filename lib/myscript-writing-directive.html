@@ -2,22 +2,24 @@
   class="myscript-writing-directive"
   width="100%"
   >
-  <svg
-    class="myscript-writing-svg"
-    width="100%"
-    height="300px"
-    style="background-color: grey;"
-    fill="slategrey" stroke="black" stroke-width="3"
-    >
-    <path
-      class="myscript-writing-stroke"
-      ng-cloak
-      ng-repeat="stroke in strokes"
-      ng-style="lineStyle"
-      ng-attr-d="{{stroke.path}}"
-    >
-    </path>
-  </svg>
+  <div class="myscript-writing-svg-container">
+    <svg
+      class="myscript-writing-svg"
+      width="100%"
+      height="300px"
+      style="background-color: grey;"
+      fill="slategrey" stroke="black" stroke-width="3"
+      >
+      <path
+        class="myscript-writing-stroke"
+        ng-cloak
+        ng-repeat="stroke in strokes"
+        ng-style="lineStyle"
+        ng-attr-d="{{stroke.path}}"
+      >
+      </path>
+    </svg>
+  </div>
   <div
     class="myscript-writing-done"
     ng-click="onDone()"
