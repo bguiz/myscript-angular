@@ -22,8 +22,24 @@
         myscript-writing=""
         recognise-type="recogniseType"
         strokes="strokes"
+        results="results"
         >
       </input>
+      <p>Result:</p>
+      <ul>
+        <li>
+          <p>Latex:</p>
+          <pre>{{ formattedResults.latex }}</pre>
+        </li>
+        <li>
+          <p>MathML</p>
+          <pre>{{ formattedResults.mathml }}</pre>
+        </li>
+        <li>
+          <p>Raw:</p>
+          <pre>{{ formattedResults.raw }}</pre>
+        </li>
+      </ul>
     </div>
   </div>
 
