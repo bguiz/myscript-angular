@@ -8,7 +8,7 @@ angular
   .module('demo-myscript-app', ['myscript'])
   .controller('demo-myscript-controller', DemoMyscriptController);
 
-function DemoMyscriptController($scope) {
+function DemoMyscriptController($scope, $sce, $timeout) {
   console.log('Construct DemoMyscriptController');
   $scope.recogniseType = 'equation';
   $scope.strokes = [];
@@ -29,11 +29,19 @@ function DemoMyscriptController($scope) {
         var type;
         if (result.type.toUpperCase() === 'LATEX') {
           $scope.formattedResults.latex = result.value;
+          //TODO this is insecure, ensure that this is really mathml before marking it as safe
+          $scope.formattedResults.latexTrustedString = $sce.trustAsHtml('\\('+result.value+'\\)');
         }
         if (result.type.toUpperCase() === 'MATHML') {
           $scope.formattedResults.mathml = result.value;
+          //TODO this is insecure, ensure that this is really mathml before marking it as safe
+          $scope.formattedResults.mathmlTrustedString = $sce.trustAsHtml(result.value);
         }
       });
+      $timeout(function() {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'demo-myscript-result-latex']);
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'demo-myscript-result-mathml']);
+      }, 0, true);
     }
     catch (ex) {
       // Do nothing

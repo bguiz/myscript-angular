@@ -11,6 +11,7 @@
   <script src="../lib/myscript-recogniser-service.js"></script>
   <script src="../lib/myscript-writing-directive.js"></script>
   <script src="./index.js"></script>
+  <script src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
   <link rel="stylesheet" type="text/css" href="./index.css"></link>
 </head>
 <body>
@@ -30,11 +31,17 @@
       <ul>
         <li>
           <p>Latex:</p>
-          <pre>{{ formattedResults.latex }}</pre>
+          <div
+            id="demo-myscript-result-latex"
+            ng-bind-html="formattedResults.latexTrustedString"
+          ></div>
         </li>
         <li>
           <p>MathML</p>
-          <pre>{{ formattedResults.mathml }}</pre>
+          <div
+            id="demo-myscript-result-mathml"
+            ng-bind-html="formattedResults.mathmlTrustedString"
+          ></div>
         </li>
         <li>
           <p>Raw:</p>
