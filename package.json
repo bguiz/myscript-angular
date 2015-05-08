@@ -1,6 +1,6 @@
 {
   "name": "myscript-angular",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "AngularJs integrations for MyScript by VisionObjects",
   "directories": {
     "example": "example"
@@ -21,7 +21,10 @@
     "recognition",
     "OCR",
     "math",
-    "equation"
+    "equation",
+    "mathml",
+    "latex",
+    "mathjax"
   ],
   "author": "bguiz",
   "license": "GPLv3",

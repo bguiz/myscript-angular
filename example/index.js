@@ -29,19 +29,21 @@ function DemoMyscriptController($scope, $sce, $timeout) {
         var type;
         if (result.type.toUpperCase() === 'LATEX') {
           $scope.formattedResults.latex = result.value;
-          //TODO this is insecure, ensure that this is really mathml before marking it as safe
-          $scope.formattedResults.latexTrustedString = $sce.trustAsHtml('\\('+result.value+'\\)');
+          //TODO this is insecure, ensure that this is really latex before marking it as safe
+          //TODO investigate if it is possible to set the results directly:
+          //http://docs.mathjax.org/en/latest/api/elementjax.html#Text
+          var div = document.getElementById('demo-myscript-result-latex');
+          div.innerHTML = '\\('+result.value+'\\)';
+          MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
         }
         if (result.type.toUpperCase() === 'MATHML') {
           $scope.formattedResults.mathml = result.value;
           //TODO this is insecure, ensure that this is really mathml before marking it as safe
-          $scope.formattedResults.mathmlTrustedString = $sce.trustAsHtml(result.value);
+          var div = document.getElementById('demo-myscript-result-mathml');
+          div.innerHTML = result.value;
+          MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
         }
       });
-      $timeout(function() {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'demo-myscript-result-latex']);
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'demo-myscript-result-mathml']);
-      }, 0, true);
     }
     catch (ex) {
       // Do nothing
