@@ -21,7 +21,10 @@
     "recognition",
     "OCR",
     "math",
-    "equation"
+    "equation",
+    "mathml",
+    "latex",
+    "mathjax"
   ],
   "author": "bguiz",
   "license": "GPLv3",
