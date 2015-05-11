@@ -1,0 +1,37 @@
+{
+  "name": "myscript-angular",
+  "version": "0.0.1",
+  "homepage": "https://github.com/bguiz/myscript-angular",
+  "authors": [
+    "bguiz"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "GPLv3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "keywords": [
+    "myscript",
+    "angularjs",
+    "angular",
+    "handwriting",
+    "writing",
+    "recognition",
+    "OCR",
+    "math",
+    "equation",
+    "mathml",
+    "latex",
+    "mathjax",
+    "svg"
+  ],
+  "dependencies": {
+    "myscript-js": "~0.0.1"
+  }
+}
