@@ -11,7 +11,6 @@ angular
 function DemoMyscriptController($scope, $sce, $timeout) {
   console.log('Construct DemoMyscriptController');
   $scope.recogniseType = 'equation';
-  $scope.strokes = [];
   $scope.results = {};
 
   $scope.formattedResults = {
