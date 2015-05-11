@@ -24,12 +24,16 @@
     "equation",
     "mathml",
     "latex",
-    "mathjax"
+    "mathjax",
+    "svg"
   ],
   "author": "bguiz",
   "license": "GPLv3",
   "bugs": {
     "url": "https://github.com/bguiz/myscript-angular/issues"
   },
-  "homepage": "https://github.com/bguiz/myscript-angular"
+  "homepage": "https://github.com/bguiz/myscript-angular",
+  "dependencies": {
+    "myscript-js": "~0.0.1"
+  }
 }
