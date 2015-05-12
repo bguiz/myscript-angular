@@ -1,6 +1,6 @@
 {
   "name": "myscript-angular",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "homepage": "https://github.com/bguiz/myscript-angular",
   "authors": [
     "bguiz"
@@ -32,6 +32,6 @@
     "svg"
   ],
   "dependencies": {
-    "myscript-js": "~0.0.1"
+    "myscript-js": "~0.0.4"
   }
 }
