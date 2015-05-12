@@ -32,6 +32,6 @@
     "svg"
   ],
   "dependencies": {
-    "myscript-js": "~0.0.4"
+    "myscript-js": "~0.0.5"
   }
 }
