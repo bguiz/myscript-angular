@@ -19,36 +19,73 @@
 </head>
 <body>
   <div ng-view>
+    <h1>Myscript AngularJs Demo</h1>
     <div
+      class="controller1"
       ng-controller="demo-myscript-controller"
       >
-      <h1>Myscript AngularJs Demo</h1>
+      <p>Input #1</p>
       <input
+        class="input1"
         myscript-writing=""
         recognise-type="recogniseType"
         results="results"
         >
       </input>
-      <p>Result:</p>
+      <p>Result #1:</p>
       <ul>
         <li>
           <p>Latex:</p>
           <div
-            id="demo-myscript-result-latex"
+            class="demo-myscript-result-latex"
             ng-bind-html="formattedResults.latexTrustedString"
           ></div>
         </li>
         <li>
           <p>MathML</p>
           <div
-            id="demo-myscript-result-mathml"
+            class="demo-myscript-result-mathml"
             ng-bind-html="formattedResults.mathmlTrustedString"
           ></div>
         </li>
-        <li>
+        <!-- <li>
           <p>Raw:</p>
           <pre>{{ formattedResults.raw }}</pre>
+        </li> -->
+      </ul>
+    </div>
+    <div
+      class="controller1"
+      ng-controller="demo-myscript-controller"
+      >
+      <p>Input #2</p>
+      <input
+        class="input2"
+        myscript-writing=""
+        recognise-type="recogniseType"
+        results="results"
+        >
+      </input>
+      <p>Result #2:</p>
+      <ul>
+        <li>
+          <p>Latex:</p>
+          <div
+            class="demo-myscript-result-latex"
+            ng-bind-html="formattedResults.latexTrustedString"
+          ></div>
         </li>
+        <li>
+          <p>MathML</p>
+          <div
+            class="demo-myscript-result-mathml"
+            ng-bind-html="formattedResults.mathmlTrustedString"
+          ></div>
+        </li>
+        <!-- <li>
+          <p>Raw:</p>
+          <pre>{{ formattedResults.raw }}</pre>
+        </li> -->
       </ul>
     </div>
   </div>
