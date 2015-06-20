@@ -4,28 +4,60 @@ Integrations for Myscript from VisionObjects for AngularJs projects.
 
 ## Usage
 
-See the example app in `/example`.
-
-Note that this is very much a work in progress,
+Note that this is very much a **work in progress**,
 so do not expect anything to be stable.
 
-### Browserified usage
+### Basic usage
 
-Unfortunately, usage within a project built using browserify is not fully supported.
+See the example app in `/example`.
 
-You can use it in a not so nice way.
+```html
+<!-- first include `angularjs` itself -->
+<script src="./angular-1.3.2.js"></script>
 
-```javascript
-require('myscript-angular/myscript-module');
-require('myscript-angular/myscript-recogniser-service');
-require('myscript-angular/myscript-writing-directive');
-require('myscript-angular/myscript-pad-directive');
+<!-- include `handwriting` and `myscript-js`, which are this modules' dependencies -->
+<script src="../node_modules/handwriting/index.js"></script>
+<script src="../node_modules/myscript-js/myscript-writing.js"></script>
+<script src="../node_modules/myscript-js/myscript-recogniser.js"></script>
+
+<!-- include this modules -->
+<script src="../lib/myscript-recogniser-service.js"></script>
+<script src="../lib/myscript-writing-directive.js"></script>
+<script src="../lib/myscript-writing-pad-directive.js"></script>
+<script src="../lib/myscript-module.js"></script>
+
+<!-- finally, include the application's own source -->
+<script src="./index.js"></script>
 ```
 
-This attaches each of the angular providers and the main module to the
-angular namespace, rather than exporting them.
-Future versions aim to make this a nicer experience,
-perhaps by making each module conform to UMD standards.
+### Bundled usage
+
+Each of the angular providers are now exported in accord with
+Universal Module Declaration (UMD) standards.
+This means that the module can be used with bundlers such as Browserify.
+
+### Browserify example
+
+If you wish to use the entire module,
+simply `require()` the `myscript-module` file.
+This is the most likely scenario.
+
+```javascript
+var myscriptModule = require('myscript-angular/myscript-module');
+```
+
+If you have a very specific use case in mind,
+where you need only specific parts,
+you may require them individually.
+
+```javascript
+var myscriptRecogniserService = require('myscript-angular/myscript-recogniser-service');
+var myscriptWritingDirective = require('myscript-angular/myscript-writing-directive');
+var myscriptWritingPadDirective = require('myscript-angular/myscript-writing-pad-directive');
+```
+
+In both cases remember to add the
+`require()`d module or provider to you application.
 
 ## Contributing
 
