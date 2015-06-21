@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/bguiz/myscript-angular",
   "dependencies": {
-    "handwriting": "~0.0.1",
+    "handwriting": "~0.0.2",
     "myscript-js": "~0.0.7"
   }
 }

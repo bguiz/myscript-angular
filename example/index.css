@@ -1,20 +1,50 @@
+body {
+  margin: 0;
+}
+
 .myscript-writing-pad-directive {
+  background-color: #000000;
   position: absolute;
   bottom: 0px;
-  width: 90%;
+  width: 100%;
 }
 
 .myscript-writing-svg-container {
   -ms-touch-action: none;
   touch-action: none;
+
+  padding: 4px;
+  margin: 4px;
+  border: none;
+
+  width: 85%;
+  float: left;
+}
+
+.myscript-writing-buttons-container {
+  padding: 4px;
+  margin: 4px;
+  border: none;
+
+  width: 10%;
+  float: right;
+}
+
+.myscript-clear {
+  clear: both;
 }
 
 .myscript-writing-button {
-  display: inline-block;
-  padding: 2px;
-  margin: 2px;
-  border: 2px solid blue;
+  display: block;
+  width: 85%;
   height: 15px;
+
+  padding: 4px;
+  margin: 4px;
+  border: none;
+
+  background-color: #3333ee;
+  color: #ffffff;
 }
 
 @-webkit-keyframes animate-slide-from-top {
