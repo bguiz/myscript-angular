@@ -1,6 +1,6 @@
 {
   "name": "myscript-angular",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "AngularJs integrations for MyScript by VisionObjects",
   "directories": {
     "example": "example"
@@ -35,6 +35,6 @@
   "homepage": "https://github.com/bguiz/myscript-angular",
   "dependencies": {
     "handwriting": "~0.0.1",
-    "myscript-js": "~0.0.5"
+    "myscript-js": "~0.0.7"
   }
 }

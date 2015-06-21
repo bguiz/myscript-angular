@@ -1,3 +1,9 @@
+.myscript-writing-pad-directive {
+  position: absolute;
+  bottom: 0px;
+  width: 90%;
+}
+
 .myscript-writing-svg-container {
   -ms-touch-action: none;
   touch-action: none;
