@@ -16,8 +16,8 @@ function DemoMyscriptController($scope, $element) {
   // because MathJax cannot render to string.
   // Instead it requires DOM manipulatin directly.
   console.log('Construct DemoMyscriptController');
-  $scope.recogniseType = 'equation';
-  $scope.results = {};
+  $scope.myscriptRecogniseType = 'equation';
+  $scope.myscriptResults = {};
 
   $scope.formattedResults = {
     latex: '',
@@ -25,18 +25,18 @@ function DemoMyscriptController($scope, $element) {
     raw: '{}',
   };
 
-  $scope.$watch('results', function() {
-    $scope.formattedResults.raw = JSON.stringify($scope.results, undefined, '  ');
+  $scope.$watch('myscriptResults', function() {
+    $scope.formattedResults.raw = JSON.stringify($scope.myscriptResults, undefined, '  ');
 
     try {
-      var results = $scope.results.data.result.results;
+      var results = $scope.myscriptResults.data.result.results;
       results.forEach(function(result) {
         var type;
         if (result.type.toUpperCase() === 'LATEX') {
           $scope.formattedResults.latex = result.value;
           //TODO this is insecure, ensure that this is really latex before marking it as safe
           //TODO investigate if it is possible to set the results directly:
-          //http://docs.mathjax.org/en/latest/api/elementjax.html#Text
+          // http://docs.mathjax.org/en/latest/api/elementjax.html#Text
           var div = $element[0].querySelector('.demo-myscript-result-latex');
           div.innerHTML = '\\('+result.value+'\\)';
           MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
@@ -51,7 +51,7 @@ function DemoMyscriptController($scope, $element) {
       });
     }
     catch (ex) {
-      // Do nothing
+      console.log('Error occurred while parsing myscriptResults', ex);
     }
   });
 }
