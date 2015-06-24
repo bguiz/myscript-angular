@@ -16,6 +16,12 @@ function DemoMyscriptController($scope, $element) {
   // because MathJax cannot render to string.
   // Instead it requires DOM manipulatin directly.
   console.log('Construct DemoMyscriptController');
+
+  $scope.myscriptOptions = {
+    disableAutoCloseOnSubmit: true,
+    recogniseType: 'equation',
+  };
+
   $scope.myscriptRecogniseType = 'equation';
   $scope.myscriptResults = {};
 
