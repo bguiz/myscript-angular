@@ -1,6 +1,6 @@
 {
   "name": "myscript-angular",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "AngularJs integrations for MyScript by VisionObjects",
   "directories": {
     "example": "example"
@@ -22,6 +22,8 @@
     "OCR",
     "math",
     "equation",
+    "text",
+    "digits",
     "mathml",
     "latex",
     "mathjax",
@@ -35,6 +37,6 @@
   "homepage": "https://github.com/bguiz/myscript-angular",
   "dependencies": {
     "handwriting": "~0.0.1",
-    "myscript-js": "~0.3.1"
+    "myscript-js": "~0.4.0"
   }
 }

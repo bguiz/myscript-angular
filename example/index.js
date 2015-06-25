@@ -19,10 +19,8 @@ function DemoMyscriptController($scope, $element) {
 
   $scope.myscriptOptions = {
     disableAutoCloseOnSubmit: true,
-    recogniseType: 'equation',
+    recogniseType: 'digits',
   };
-
-  $scope.myscriptRecogniseType = 'equation';
   $scope.myscriptResults = {};
 
   $scope.formattedResults = {
@@ -35,26 +33,39 @@ function DemoMyscriptController($scope, $element) {
     $scope.formattedResults.raw = JSON.stringify($scope.myscriptResults, undefined, '  ');
 
     try {
-      var results = $scope.myscriptResults.data.result.results;
-      results.forEach(function(result) {
-        var type;
-        if (result.type.toUpperCase() === 'LATEX') {
-          $scope.formattedResults.latex = result.value;
-          //TODO this is insecure, ensure that this is really latex before marking it as safe
-          //TODO investigate if it is possible to set the results directly:
-          // http://docs.mathjax.org/en/latest/api/elementjax.html#Text
-          var div = $element[0].querySelector('.demo-myscript-result-latex');
-          div.innerHTML = '\\('+result.value+'\\)';
-          MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
-        }
-        if (result.type.toUpperCase() === 'MATHML') {
-          $scope.formattedResults.mathml = result.value;
-          //TODO this is insecure, ensure that this is really mathml before marking it as safe
-          var div = $element[0].querySelector('.demo-myscript-result-mathml');
-          div.innerHTML = result.value;
-          MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
-        }
-      });
+      var myscriptResult = $scope.myscriptResults.data.result;
+      var results = myscriptResult.results;
+      var textResults = myscriptResult.textSegmentResult;
+      if (!!results) {
+        results.forEach(function(result) {
+          var type, div;
+          if (result.type.toUpperCase() === 'LATEX') {
+            $scope.formattedResults.latex = result.value;
+            //TODO this is insecure, ensure that this is really latex before marking it as safe
+            //TODO investigate if it is possible to set the results directly:
+            // http://docs.mathjax.org/en/latest/api/elementjax.html#Text
+            div = $element[0].querySelector('.demo-myscript-result-latex');
+            div.innerHTML = '\\('+result.value+'\\)';
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
+          }
+          if (result.type.toUpperCase() === 'MATHML') {
+            $scope.formattedResults.mathml = result.value;
+            //TODO this is insecure, ensure that this is really mathml before marking it as safe
+            div = $element[0].querySelector('.demo-myscript-result-mathml');
+            div.innerHTML = result.value;
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
+          }
+        });
+      }
+      else if (!!textResults) {
+        var val = textResults.candidates[textResults.selectedCandidateIdx];
+        val = val && val.label;
+        var div = $element[0].querySelector('.demo-myscript-result-latex');
+        div.innerHTML = '\\('+val+'\\)';
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
+        div = $element[0].querySelector('.demo-myscript-result-mathml');
+        div.innerHTML = '';
+      }
     }
     catch (ex) {
       console.log('Error occurred while parsing myscriptResults', ex);
