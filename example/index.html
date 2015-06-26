@@ -38,23 +38,30 @@
       <p>Result #1:</p>
       <ul>
         <li>
-          <p>Latex:</p>
-          <div
-            class="demo-myscript-result-latex"
-            ng-bind-html="formattedResults.latexTrustedString"
-          ></div>
+          <span>Text:</span>
+          <span
+            class="demo-myscript-result-text"
+          >{{myscriptResults.parsedResult.text}}</span>
         </li>
         <li>
-          <p>MathML</p>
-          <div
-            class="demo-myscript-result-mathml"
+          <span>Latex:</span>
+          <span
+            ng-bind-html="formattedResults.latexTrustedString"
+            class="demo-myscript-result-latex"
+          ></span>
+        </li>
+        <li>
+          <span>MathML</span>
+          <span
             ng-bind-html="formattedResults.mathmlTrustedString"
-          ></div>
+            class="demo-myscript-result-mathml"
+          ></span>
         </li>
         <!-- <li>
           <p>Raw:</p>
           <pre>{{ formattedResults.raw }}</pre>
-        </li> -->
+        </li>
+        -->
       </ul>
     </div>
     <div
@@ -73,23 +80,30 @@
       <p>Result #2:</p>
       <ul>
         <li>
-          <p>Latex:</p>
-          <div
-            class="demo-myscript-result-latex"
-            ng-bind-html="formattedResults.latexTrustedString"
-          ></div>
+          <span>Text:</span>
+          <span
+            class="demo-myscript-result-text"
+          >{{myscriptResults.parsedResult.text}}</span>
         </li>
         <li>
-          <p>MathML</p>
-          <div
-            class="demo-myscript-result-mathml"
+          <span>Latex:</span>
+          <span
+            ng-bind-html="formattedResults.latexTrustedString"
+            class="demo-myscript-result-latex"
+          ></span>
+        </li>
+        <li>
+          <span>MathML</span>
+          <span
             ng-bind-html="formattedResults.mathmlTrustedString"
-          ></div>
+            class="demo-myscript-result-mathml"
+          ></span>
         </li>
         <!-- <li>
           <p>Raw:</p>
           <pre>{{ formattedResults.raw }}</pre>
-        </li> -->
+        </li>
+        -->
       </ul>
     </div>
   </div>

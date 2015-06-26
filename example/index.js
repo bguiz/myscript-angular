@@ -19,6 +19,8 @@ function DemoMyscriptController($scope, $element) {
 
   $scope.myscriptOptions = {
     disableAutoCloseOnSubmit: true,
+    // recogniseType: 'math',
+    // recogniseType: 'text',
     recogniseType: 'digits',
   };
   $scope.myscriptResults = {};
@@ -29,46 +31,29 @@ function DemoMyscriptController($scope, $element) {
     raw: '{}',
   };
 
-  $scope.$watch('myscriptResults', function() {
-    $scope.formattedResults.raw = JSON.stringify($scope.myscriptResults, undefined, '  ');
-
-    try {
-      var myscriptResult = $scope.myscriptResults.data.result;
-      var results = myscriptResult.results;
-      var textResults = myscriptResult.textSegmentResult;
-      if (!!results) {
-        results.forEach(function(result) {
-          var type, div;
-          if (result.type.toUpperCase() === 'LATEX') {
-            $scope.formattedResults.latex = result.value;
-            //TODO this is insecure, ensure that this is really latex before marking it as safe
-            //TODO investigate if it is possible to set the results directly:
-            // http://docs.mathjax.org/en/latest/api/elementjax.html#Text
-            div = $element[0].querySelector('.demo-myscript-result-latex');
-            div.innerHTML = '\\('+result.value+'\\)';
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
-          }
-          if (result.type.toUpperCase() === 'MATHML') {
-            $scope.formattedResults.mathml = result.value;
-            //TODO this is insecure, ensure that this is really mathml before marking it as safe
-            div = $element[0].querySelector('.demo-myscript-result-mathml');
-            div.innerHTML = result.value;
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
-          }
-        });
-      }
-      else if (!!textResults) {
-        var val = textResults.candidates[textResults.selectedCandidateIdx];
-        val = val && val.label;
-        var div = $element[0].querySelector('.demo-myscript-result-latex');
-        div.innerHTML = '\\('+val+'\\)';
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
-        div = $element[0].querySelector('.demo-myscript-result-mathml');
-        div.innerHTML = '';
-      }
+  $scope.$watch('myscriptResults.parsedResult.math', function () {
+    var div;
+    var math =
+      $scope.myscriptResults &&
+      $scope.myscriptResults.parsedResult &&
+      $scope.myscriptResults.parsedResult.math;
+    var latex = math && math.latex;
+    var mathml = math && math.mathml;
+    if (!!latex) {
+      $scope.formattedResults.latex = latex;
+      //TODO this is insecure, ensure that this is really latex before marking it as safe
+      //TODO investigate if it is possible to set the results directly:
+      // http://docs.mathjax.org/en/latest/api/elementjax.html#Text
+      div = $element[0].querySelector('.demo-myscript-result-latex');
+      div.innerHTML = '\\('+latex+'\\)';
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
     }
-    catch (ex) {
-      console.log('Error occurred while parsing myscriptResults', ex);
+    if (!!mathml) {
+      $scope.formattedResults.mathml = mathml;
+      // TODO this is insecure, ensure that this is really mathml before marking it as safe
+      div = $element[0].querySelector('.demo-myscript-result-mathml');
+      div.innerHTML = mathml;
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, div]);
     }
   });
 }
